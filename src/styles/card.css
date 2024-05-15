@@ -1,0 +1,36 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 6px solid black;
+    border-radius: 10px;
+    width: 15rem;   
+    height: 20rem;
+    background-color: #f5f5f5;
+}
+
+.card:hover{
+    transform: scale(1.1);
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+
+.pokemon-image{
+    width: 10rem;
+    height: 10rem;
+}
+
+.types
+{
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.type{
+    padding: 0.5rem;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    border: 1px solid black;
+}
