@@ -1,23 +1,12 @@
 import '../styles/menu.css'
+import logo from '../assets/logo.png';
 
-const elements = [{
-    name: 'Home',
-    url: '#'
-},
-{   
-    name: 'Otra',
-    url: '#'
-}];
 
 const Menu = () => {
     return (
-        <nav>
-            {elements.map((element, index) => (
-                <a href={element.url} key={index}>
-                    {element.name}
-                </a>
-            ))}
-        </nav>
+        <header>
+            <img src={logo} alt="logo pokemon" className="logo" />
+        </header>
     );
 };
 

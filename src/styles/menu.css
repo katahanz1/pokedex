@@ -1,15 +1,15 @@
-nav{
+header{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    background-color: #222;
+    background-color: #F5DB13;
     color: white;
     height: 3rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
 }
 
-nav a{
-    color: white;
-    text-decoration: none;
+.logo{
+    width: 100px;
+    height: auto;
 }
