@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import '../styles/card.css'
+import '../styles/card.css';
 
-const Card = ({name, url}) =>{
-
-    const colors = [{
+const Card = ({ name, url }) => {
+    const colors = {
         normal: '#A8A77A',
         fire: '#EE8130',
         water: '#6390F0',
@@ -22,46 +21,52 @@ const Card = ({name, url}) =>{
         dark: '#705746',
         steel: '#B7B7CE',
         fairy: '#D685AD'
-    }]
+    };
 
-    const [image, setImage] = useState('')
-    const [types, setTypes] = useState([])
+    const [image, setImage] = useState('');
+    const [types, setTypes] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() =>{
-
+    useEffect(() => {
         fetch(url)
-        .then(res => res.json())
-        .then(data => {
-            const newImage = data.sprites.other['official-artwork'].front_default;
-            setImage(newImage);
+            .then(res => res.json())
+            .then(data => {
+                const newImage = data.sprites.other['official-artwork'].front_default;
+                setImage(newImage);
 
-            const newTypes = data.types;
-            setTypes(newTypes);
-        })
-    },[])
+                const newTypes = data.types;
+                setTypes(newTypes);
+
+                setIsLoading(false);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                setIsLoading(false);
+            });
+    }, [url]);
+
+    if (isLoading) {
+        return <p>Loading...</p>;
+    }
 
     return (
-        <button className="card"
-            style={{
-                borderColor: colors[0][types[0].type.name]
-            }}
-        >
-            <img src={image} alt='pokemon image' className='pokemon-image'/>
-            <p>{name}</p>
-            <div className='types'>
-            {
-                types.map((type, index) =>(
-                    <p key={index} className='type'
-                        style={{
-                            backgroundColor: colors[0][type.type.name]
-                        
-                        }}
-                    >{type.type.name}</p>
-                ))
-            }
+        <div className="card">
+                <div className="card-front" style={{ borderColor: colors[types[0]?.type.name] }}>
+                    <img src={image} alt='pokemon image' className='pokemon-image' />
+                    <p>{name}</p>
+                    <div className='types'>
+                        {types.map((type, index) => (
+                            <p key={index} className='type' style={{ backgroundColor: colors[type.type.name] }}>
+                                {type.type.name}
+                            </p>
+                        ))}
+                    </div>
+                </div>
+                <div className="card-back">
+                    <p>Más información</p>
+                </div>
             </div>
-        </button>
-    )
-}
+    );
+};
 
 export default Card;

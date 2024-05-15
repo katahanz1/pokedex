@@ -2,5 +2,12 @@
     padding: 3rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-    gap: 16px;
+    justify-items: center;
+    gap: 32px;
 }
+
+.button{
+    display: flex;
+    
+}
+
