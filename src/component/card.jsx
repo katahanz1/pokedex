@@ -26,6 +26,7 @@ const Card = ({ name, url }) => {
     const [image, setImage] = useState('');
     const [types, setTypes] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [stats, setStats] = useState([]);
 
     useEffect(() => {
         fetch(url)
@@ -37,13 +38,18 @@ const Card = ({ name, url }) => {
                 const newTypes = data.types;
                 setTypes(newTypes);
 
+                const newStats = data.stats;
+                setStats(newStats);
+
                 setIsLoading(false);
+               
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
                 setIsLoading(false);
             });
-    }, [url]);
+    }, []);
+    
 
     if (isLoading) {
         return <p>Loading...</p>;
@@ -51,21 +57,30 @@ const Card = ({ name, url }) => {
 
     return (
         <div className="card">
-                <div className="card-front" style={{ borderColor: colors[types[0]?.type.name] }}>
-                    <img src={image} alt='pokemon image' className='pokemon-image' />
-                    <p>{name}</p>
-                    <div className='types'>
-                        {types.map((type, index) => (
-                            <p key={index} className='type' style={{ backgroundColor: colors[type.type.name] }}>
-                                {type.type.name}
-                            </p>
-                        ))}
-                    </div>
-                </div>
-                <div className="card-back">
-                    <p>Más información</p>
+            <div className="card-front" style={{ borderColor: colors[types[0]?.type.name] }}>
+                <img src={image} alt='pokemon image' className='pokemon-image' />
+                <p>{name}</p>
+                <div className='types'>
+                    {types.map((type, index) => (
+                        <p key={index} className='type' style={{ backgroundColor: colors[type.type.name] }}>
+                            {type.type.name}
+                        </p>
+                    ))}
                 </div>
             </div>
+            <div className="card-back">
+                {
+                   stats.map((stat, index) => (
+                    <div key={index} className="stat">
+                        <p>{stat.stat.name}</p>
+                        <div className="stat-bar-container">
+                            <div className="stat-bar" style={{ width: `${stat.base_stat}%` }}></div>
+                        </div>
+                    </div>
+                ))
+                }
+            </div>
+        </div>
     );
 };
 
