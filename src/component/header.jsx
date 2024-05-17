@@ -1,8 +1,8 @@
-import '../styles/menu.css'
+import '../styles/header.css'
 import logo from '../assets/logo.png';
 
 
-const Menu = () => {
+const Header = () => {
     return (
         <header>
             <img src={logo} alt="logo pokemon" className="logo" />
@@ -10,4 +10,4 @@ const Menu = () => {
     );
 };
 
-export default Menu;
+export default Header;

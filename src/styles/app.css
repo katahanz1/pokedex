@@ -6,8 +6,8 @@
     gap: 32px;
 }
 
-.button{
+.button-container {
     display: flex;
-    
+    align-items: center;
+    justify-content: center;
 }
-

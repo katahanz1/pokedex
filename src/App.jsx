@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Menu from './component/menu'
+import Header from './component/header'
 import Card from './component/card'
 import Button from './component/button'
 import './styles/app.css'
@@ -26,16 +26,18 @@ function App() {
 
   return (
     <>
-      <Menu />
+      <Header />
       <div className="card-container">
                 {pokemons.slice(0, (page + 1) * ITEMS_PER_PAGE).map((pokemon, index) => (
                     <Card key={index} name={pokemon.name} url={pokemon.url} />
                 ))}
       </div>
       {((page + 1) * ITEMS_PER_PAGE) < pokemons.length && (
-                <Button handleClick={loadMore} className="button">
+                <div className='button-container'>
+                  <Button handleClick={loadMore} className="button">
                     {isLoading ? 'Loading...' : 'Load More'}
-                </Button>
+                  </Button>
+                </div>
             )}
     </>
   )
