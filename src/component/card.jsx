@@ -48,8 +48,7 @@ const Card = ({ name, url }) => {
                 console.error('Error fetching data:', error);
                 setIsLoading(false);
             });
-    }, []);
-    
+    }, [url]);
 
     if (isLoading) {
         return <p>Loading...</p>;

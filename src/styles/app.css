@@ -3,6 +3,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
     justify-items: center;
+    align-items: center;
     gap: 32px;
 }
 
@@ -10,4 +11,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.pokemon-not-found{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #f44336;
 }

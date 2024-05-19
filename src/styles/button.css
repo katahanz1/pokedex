@@ -1,4 +1,4 @@
-button{
+.load-button{
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -7,5 +7,10 @@ button{
     border-radius: 5px;
     cursor: pointer;
     width: 10rem;
-    left: 45%;
+    transition: .3s;
+}
+
+.load-button:hover{
+    background-color: #45a049;
+    transform: scale(1.03);
 }
